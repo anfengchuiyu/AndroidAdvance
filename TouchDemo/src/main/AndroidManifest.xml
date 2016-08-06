@@ -25,6 +25,15 @@
         <activity android:name=".swiperefreshlayout.SwipeRefreshActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".pullrefresh.PullrefreshActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".aidl.MyAidlActivity"
+            android:screenOrientation="portrait"/>
+
+        <service android:name=".aidl.MyAidlService"
+            android:process=":remote"/>
+
     </application>
 
 </manifest>

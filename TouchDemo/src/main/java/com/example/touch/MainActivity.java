@@ -14,8 +14,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.touch.aidl.MyAidlActivity;
 import com.example.touch.jni.JniTest;
 import com.example.touch.jni.JniTestActivity;
+import com.example.touch.pullrefresh.PullrefreshActivity;
 import com.example.touch.swiperefreshlayout.SwipeRefreshActivity;
 import com.example.touch.touch_delegate.TouchDelegateActivity;
 
@@ -37,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
         String[] data = new String[]{
                 "Touch Delegate Demo",
                 "Jni Test",
-                "SwipeRefreshLayout源码分析"
+                "SwipeRefreshLayout源码分析",
+                "AIDL Demo",
+                "Custom PullRefresh"
         };
         RecyclerAdapter adapter = new RecyclerAdapter(this, Arrays.asList(data));
         recyclerView.setAdapter(adapter);
@@ -93,6 +97,14 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     intent = new Intent(context, SwipeRefreshActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case 3:
+                    intent = new Intent(context, MyAidlActivity.class);
+                    context.startActivity(intent);
+                    break;
+                case 4:
+                    intent = new Intent(context, PullrefreshActivity.class);
                     context.startActivity(intent);
                     break;
             }
