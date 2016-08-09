@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.touch.IMyAidlInterface;
 import com.example.touch.R;
 
 /**
@@ -32,7 +31,15 @@ public class MyAidlActivity extends AppCompatActivity {
             try {
                 myAidlInterface.setName("hello world!!!");//客户端设置一个字符串
                 String nameStr = myAidlInterface.getName();//从服务端取设置的字符串
+
+                Person person = new Person();
+                person.setName("zhe");
+                person.setAge(23);
+                myAidlInterface.setPerson(person);
+
+
                 textView.append("\nService返回的数据： " + nameStr);
+                textView.append("\nService返回的person数据： " + myAidlInterface.getPerson().toString());
                 Log.d(TAG, nameStr);
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -54,6 +61,8 @@ public class MyAidlActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, MyAidlService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
+
+        Person p = new Person();
     }
 
     @Override

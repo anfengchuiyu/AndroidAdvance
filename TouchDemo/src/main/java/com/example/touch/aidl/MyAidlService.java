@@ -7,14 +7,13 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 
-import com.example.touch.IMyAidlInterface;
-
 /**
  * Created by liuzhe on 2016/8/2.
  */
 public class MyAidlService extends Service{
 
-    private String mName = "liuzhe";
+    private volatile String mName = "liuzhe";
+    private volatile Person mPerson = new Person();
 
     private Binder binder = new IMyAidlInterface.Stub(){
 
@@ -26,6 +25,18 @@ public class MyAidlService extends Service{
         @Override
         public String getName() throws RemoteException {
             return mName;
+        }
+
+        @Override
+        public Person getPerson() throws RemoteException {
+            return mPerson;
+        }
+
+        @Override
+        public void setPerson(Person person) throws RemoteException {
+            mPerson.setName(person.getName());
+            mPerson.setAge(person.getAge());
+
         }
     };
 

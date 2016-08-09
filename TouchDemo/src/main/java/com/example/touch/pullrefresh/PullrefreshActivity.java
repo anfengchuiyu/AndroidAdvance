@@ -66,7 +66,11 @@ public class PullrefreshActivity extends AppCompatActivity {
 
             @Override
             public void onDragDistanceChange(float distance, float percent, float offset) {
-                super.onDragDistanceChange(distance, percent, offset);
+                if (percent >= 1.0f) {
+                    header_tv.setText("松开刷新");
+                } else {
+                    header_tv.setText("下拉刷新");
+                }
             }
         });
     }
